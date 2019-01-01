@@ -1,0 +1,49 @@
+type Builder {
+  name: String!
+  pipelines: [Pipeline!]!
+}
+
+type Pipeline {
+    id: String!
+    desc: String!
+    confs: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type HandleLog {
+    log: String!
+    errMsg: String!
+}
+
+type VerboseResp {
+    result: String!
+    logs: [HandleLog!]!
+}
+
+input KV {
+    key: String!
+    value: String!
+}
+
+input HandleInput {
+    inValue: String!
+    params: [KV!]
+}
+
+type Query {
+  builders: [Builder!]!
+  pipelines: [Pipeline!]!
+  runPipeline(pipelineId: String!, input: HandleInput): String!
+  rubPipelineVerbosely(pipelineId: String!, input: HandleInput): VerboseResp!
+}
+
+input NewPipeline {
+    id: String!
+    desc: String!
+    confs: String!
+}
+
+type Mutation {
+  addPipeline(input: NewPipeline!): Pipeline!
+}

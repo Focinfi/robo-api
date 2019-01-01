@@ -1,0 +1,22 @@
+# .gqlgen.yml example
+#
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+- gql/schema.graphql
+exec:
+  filename: gql/gen/generated.go
+  package: gen
+resolver:
+  filename: gql/gen/resolver.go
+  type: Resolver
+model:
+  filename: gql/gen/models.go
+  package: gen
+models:
+  Builder:
+    model: github.com/Focinfi/robo-api/models/gql.Builder
+  Pipeline:
+    model: github.com/Focinfi/robo-api/models/gql.Pipeline
+
